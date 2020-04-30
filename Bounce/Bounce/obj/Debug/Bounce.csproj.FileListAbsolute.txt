@@ -1,0 +1,10 @@
+C:\Users\LENOVO\Documents\Bounce-\Bounce\Bounce\bin\Debug\Bounce.exe.config
+C:\Users\LENOVO\Documents\Bounce-\Bounce\Bounce\bin\Debug\Bounce.exe
+C:\Users\LENOVO\Documents\Bounce-\Bounce\Bounce\bin\Debug\Bounce.pdb
+C:\Users\LENOVO\Documents\Bounce-\Bounce\Bounce\obj\Debug\Bounce.csprojAssemblyReference.cache
+C:\Users\LENOVO\Documents\Bounce-\Bounce\Bounce\obj\Debug\Bounce.Form1.resources
+C:\Users\LENOVO\Documents\Bounce-\Bounce\Bounce\obj\Debug\Bounce.Form_game.resources
+C:\Users\LENOVO\Documents\Bounce-\Bounce\Bounce\obj\Debug\Bounce.Properties.Resources.resources
+C:\Users\LENOVO\Documents\Bounce-\Bounce\Bounce\obj\Debug\Bounce.csproj.GenerateResource.cache
+C:\Users\LENOVO\Documents\Bounce-\Bounce\Bounce\obj\Debug\Bounce.exe
+C:\Users\LENOVO\Documents\Bounce-\Bounce\Bounce\obj\Debug\Bounce.pdb
