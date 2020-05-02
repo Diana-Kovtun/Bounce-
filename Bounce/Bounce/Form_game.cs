@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Bounce
@@ -19,70 +20,113 @@ namespace Bounce
         SolidBrush darkred = new SolidBrush(Color.DarkRed);
         SolidBrush Red = new SolidBrush(Color.Red);
         SolidBrush Gray = new SolidBrush(Color.SlateGray);
-        SolidBrush Pink = new SolidBrush(Color.Pink);
+        SolidBrush Pink = new SolidBrush(Color.DeepPink);
         Pen Field = new Pen(Color.Black, 1);
         Bitmap bitmap;
         Ball redBall;
+        Enemies enemies;
        
         int sec = 0, min = 0, hour = 0;
         private bool isPressedAnyKey = false;
         Image enemy = Image.FromFile("123.png");
         
-
+        
         
 
     
 
        
 
-        public Form_game()
+        public Form_game(string temp)
         {
+            
+            
+            
             count = 0;
             InitializeComponent();
             bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             KeyPreview = true;
             this.KeyDown += new KeyEventHandler(keyboard);
             this.KeyUp += new KeyEventHandler(freeKeyb);
+            label2.Hide();
+            label2.Text = temp;
 
-                 
+
+
+
+
         }
 
         private void keyboard(object sender, KeyEventArgs e)
         {
-           
-                switch (e.KeyCode.ToString())
-                {
-                    case "W":
-                        {
-                            redBall.Navigation = 'T';
 
-                            break;
 
-                        }
-                    case "A":
-                        {
-                            redBall.Navigation = 'L';
-                            break;
-                        }
-                    case "S":
-                        {
-                            redBall.Navigation = 'D';
-                            break;
-                        }
-                    case "D":
-                        {
-                            redBall.Navigation = 'R';
-                            break;
-                        }
-                    default:
-                        {
-                            redBall.WantNavigation = redBall.Navigation;
-                            break;
-                        }
+            switch (e.KeyCode.ToString())
+            {
+                case "W":
+                    {
+                     
 
-                }
-                isPressedAnyKey = true;
+                            redBall.MoveUp();
+                        
+                        
+                      
+                      
+
+                        break;
+
+                    }
+                case "A":
+                    {
+                        redBall.Navigation = 'L';
+                        break;
+                    }
+               
+
+               
+                case "D":
+                    {
+
+                        redBall.Navigation = 'R';
+
+
+                        break;
+                    }
+                default:
+                    {
+                        redBall.WantNavigation = redBall.Navigation;
+                        break;
+                    }
+
+
             }
+            if (redBall.coordinatBalls[0].x <= 0)
+            {
+                redBall.Navigation = 'R';
+            }
+            if (redBall.coordinatBalls[0].x >=830)
+            {
+                redBall.Navigation = 'L';
+            }
+            if ((redBall.coordinatBalls[0].x >= 800) && (redBall.coordinatBalls[0].y >= 430))
+            {
+                timer1.Stop();
+                timer2.Stop();
+                timer3.Stop();
+                MessageBox.Show("Winner!");
+                StreamWriter XF = new StreamWriter("123.txt", true);
+                XF.WriteLine(label2.Text);
+                XF.WriteLine(hour.ToString() + ":" + min.ToString() + ":" + sec.ToString());
+                XF.Close();
+                this.Close();
+                Form_results k = new Form_results(label2.Text,label1.Text);
+                this.Hide();
+                k.ShowDialog();
+                this.Close();
+            }
+            isPressedAnyKey = true;
+          
+        }
         
         private void freeKeyb(object sender, KeyEventArgs e)
         {
@@ -95,24 +139,31 @@ namespace Bounce
             timer2.Enabled = true;
             timer2.Interval = 1000;
             redBall = new Ball();
-          
+            enemies = new Enemies();
+            timer3.Enabled = true;
+            timer3.Interval = 10;
+               
             timer1.Enabled = true;
-            timer1.Interval = 200;
+            timer1.Interval = 1;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            
 
             for (int i = redBall.coordinatBalls.Count() - 1; i >= 0; i--)
             {
+               
+                
                 if (i == 0 && isPressedAnyKey)
                 {
                     redBall.Move();
+                     
+
                     
                 }
 
             }
+       
             Point[] points1 = new Point[3];
             points1[0].X = 50; points1[0].Y = 460;
             points1[1].X = 60; points1[1].Y = 485;
@@ -193,26 +244,23 @@ namespace Bounce
 
             for (int i = 0; i < redBall.coordinatBalls.Count(); i++)
             {
-                g.DrawEllipse(Field, redBall.coordinatBalls[i].x * width, redBall.coordinatBalls[i].y * height, width, height);
+                g.DrawEllipse(Field, redBall.coordinatBalls[i].x * 1, redBall.coordinatBalls[i].y * 1, 20, 20);
 
-                g.DrawImage(enemy, 750, 50, 70, 70);
+                g.DrawImage(enemy,enemies.x * 1,enemies.y* 50, 70, 70);
 
                 
-                g.FillEllipse(Red, redBall.coordinatBalls[i].x * width, redBall.coordinatBalls[i].y * height, width, height);
+                g.FillEllipse(Red, redBall.coordinatBalls[i].x * 1, redBall.coordinatBalls[i].y * 1, 20, 20);
                 
             }
+            
+           
 
             Rectangle rectangle1 = new Rectangle(130, 300, 100, 20);
             Rectangle rectangle2 = new Rectangle(0, 50, 650, 20);
             Rectangle rectangle3 = new Rectangle(170, 120, 730, 20);
             Rectangle rectangle4 = new Rectangle(20, 300, 20, 185);
-            Rectangle rectangle5 = new Rectangle(270, 440, 50, 20);
-            Rectangle recnagle6 = new Rectangle(320, 420, 30, 20);
-            Rectangle rectangle7 = new Rectangle(350, 400, 30, 20);
-            Rectangle rectangle8 = new Rectangle(380, 380, 30, 20);
-            Rectangle rectangle9 = new Rectangle(410, 360, 30, 20);
-            Rectangle rectangle10 = new Rectangle(430, 320, 200, 20);
-            Rectangle rectangle11 = new Rectangle(800, 435, 70, 70);
+            Rectangle rectangle5 = new Rectangle(250, 440, 50, 20);
+            Rectangle rectangle11 = new Rectangle(820, 430, 70, 70);
             g.DrawRectangle(Field, rectangle2);
             g.FillRectangle(darkred, rectangle2);
             g.DrawRectangle(Field, rectangle3);
@@ -223,14 +271,6 @@ namespace Bounce
             g.FillRectangle(darkred, rectangle1);
             g.DrawRectangle(Field, rectangle5);
             g.FillRectangle(darkred, rectangle5);
-            g.DrawRectangle(Field, rectangle7);
-            g.FillRectangle(darkred, rectangle7);
-            g.DrawRectangle(Field, rectangle8);
-            g.FillRectangle(darkred, rectangle8);
-            g.DrawRectangle(Field, rectangle9);
-            g.FillRectangle(darkred, rectangle9);
-            g.DrawRectangle(Field, rectangle10);
-            g.FillRectangle(darkred, rectangle10);
             g.DrawRectangle(Field, rectangle11);
             g.FillRectangle(Pink, rectangle11);
             g.DrawPolygon(Field, points1);
@@ -264,10 +304,66 @@ namespace Bounce
             g.DrawPolygon(Field, points15);
             g.FillPolygon(Gray, points15);
 
+            if (redBall.coordinatBalls[0].x > 650 && redBall.coordinatBalls[0].y < 100)
+            {
+                do
+                {
+                    redBall.MoveDown();
+                } while (redBall.coordinatBalls[0].y == 100);
+            }
+            if (redBall.coordinatBalls[0].x < 150 && redBall.coordinatBalls[0].y <= 280&& redBall.coordinatBalls[0].x < 320 && redBall.coordinatBalls[0].y > 100)
+            {
+                do
+                {
+                    redBall.MoveDown();
+                } while (redBall.coordinatBalls[0].y == 280);
 
+            }
+            if (redBall.coordinatBalls[0].x >= 230 && redBall.coordinatBalls[0].y > 280&&redBall.coordinatBalls[0].y<=420)
+            {
+                do
+                {
+                    redBall.MoveDown();
+                } while (redBall.coordinatBalls[0].y == 420);
+
+            }
+            if (redBall.coordinatBalls[0].x<120&&redBall.coordinatBalls[0].x>40&&redBall.coordinatBalls[0].y>280)
+            {
+                do
+                {
+                    redBall.MoveDown();
+                } while (redBall.coordinatBalls[0].y == 440);
+
+            }
            
-
-
+            if (redBall.coordinatBalls[0].y > 420&&redBall.coordinatBalls[0].x>300&&redBall.coordinatBalls[0].y<=465)
+            {
+                do
+                {
+                    redBall.MoveDown();
+                } while (redBall.coordinatBalls[0].y == 465);
+            }
+            if (redBall.coordinatBalls[0].y < 400&&redBall.coordinatBalls[0].y > 140 && redBall.coordinatBalls[0].x > 250 && redBall.coordinatBalls[0].x < 280)
+            {
+                do
+                {
+                    redBall.MoveDown();
+                } while (redBall.coordinatBalls[0].y==400);
+            }
+            if (redBall.coordinatBalls[0].y <= 30)
+            {
+                redBall.MoveDown();
+            }
+            if(redBall.coordinatBalls[0].x >= 120&&redBall.coordinatBalls[0].x <=140&&redBall.coordinatBalls[0].y <= 35&&redBall.coordinatBalls[0].y>=17||
+                redBall.coordinatBalls[0].x>=240&&redBall.coordinatBalls[0].x<=260&&redBall.coordinatBalls[0].y<=35&&redBall.coordinatBalls[0].y>=17||
+                redBall.coordinatBalls[0].x>=40&&redBall.coordinatBalls[0].x<=300&&redBall.coordinatBalls[0].y>=440)
+            {
+                timer1.Stop();
+                timer2.Stop();
+          
+                timer3.Stop();
+                MessageBox.Show("Game over!");
+            }
 
 
 
@@ -278,6 +374,34 @@ namespace Bounce
 
         private void pictureBox1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
+
+        }
+
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+            
+            if (enemies.x>=650)
+            {
+                enemies.MoveLeft();
+               
+             
+            }
+            else
+            {
+                for(int j = 650;j<=830; j++) { 
+                    enemies.MoveRight();
+                   
+                }
+
+              
+            }
+            if (redBall.coordinatBalls[0].x == enemies.x && redBall.coordinatBalls[0].y >= 50 && redBall.coordinatBalls[0].y <= 120)
+            {
+                MessageBox.Show("Game over!");
+                timer1.Stop();
+                timer3.Stop();
+                timer2.Stop();
+            }
 
         }
 
@@ -293,7 +417,7 @@ namespace Bounce
                 if (sec >= 60) { min++; sec = 0; }
                 if (min >= 60) { hour++; min = 0; }
                 label1.Text = hour.ToString() + ":" + min.ToString() + ":" + sec.ToString();
-            
+                
 
         }
        

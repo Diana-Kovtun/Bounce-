@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ball.cs" />
+    <Compile Include="Enemies.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,6 +60,18 @@
     <Compile Include="Form_game.Designer.cs">
       <DependentUpon>Form_game.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_rating.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_rating.Designer.cs">
+      <DependentUpon>Form_rating.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_results.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_results.Designer.cs">
+      <DependentUpon>Form_results.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -66,6 +79,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_game.resx">
       <DependentUpon>Form_game.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_rating.resx">
+      <DependentUpon>Form_rating.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_results.resx">
+      <DependentUpon>Form_results.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -95,6 +114,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\59071f4d2e06c15bc3d24585.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fon_linii_abstrakciya_krasochnyy_50589_1600x1200.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fon-31534.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pngtree-colorful-starry-geometric-gradient-dreamy-background-skygeometricgradientdreambackground-image_50380.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1580316757_27-p-foni-so-strelkami-88.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

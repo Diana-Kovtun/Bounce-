@@ -73,9 +73,50 @@ namespace Bounce.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1580316757_27_p_foni_so_strelkami_88 {
+            get {
+                object obj = ResourceManager.GetObject("1580316757_27-p-foni-so-strelkami-88", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _59071f4d2e06c15bc3d24585 {
             get {
                 object obj = ResourceManager.GetObject("59071f4d2e06c15bc3d24585", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fon_31534 {
+            get {
+                object obj = ResourceManager.GetObject("fon-31534", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fon_linii_abstrakciya_krasochnyy_50589_1600x1200 {
+            get {
+                object obj = ResourceManager.GetObject("fon_linii_abstrakciya_krasochnyy_50589_1600x1200", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pngtree_colorful_starry_geometric_gradient_dreamy_background_skygeometricgradientdreambackground_image_50380 {
+            get {
+                object obj = ResourceManager.GetObject("pngtree-colorful-starry-geometric-gradient-dreamy-background-skygeometricgradient" +
+                        "dreambackground-image_50380", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

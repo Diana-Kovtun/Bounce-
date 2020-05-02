@@ -8,3 +8,5 @@ C:\Users\LENOVO\Documents\Bounce-\Bounce\Bounce\obj\Debug\Bounce.Properties.Reso
 C:\Users\LENOVO\Documents\Bounce-\Bounce\Bounce\obj\Debug\Bounce.csproj.GenerateResource.cache
 C:\Users\LENOVO\Documents\Bounce-\Bounce\Bounce\obj\Debug\Bounce.exe
 C:\Users\LENOVO\Documents\Bounce-\Bounce\Bounce\obj\Debug\Bounce.pdb
+C:\Users\LENOVO\Documents\Bounce-\Bounce\Bounce\obj\Debug\Bounce.Form_results.resources
+C:\Users\LENOVO\Documents\Bounce-\Bounce\Bounce\obj\Debug\Bounce.Form_rating.resources
